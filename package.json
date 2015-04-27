@@ -1,0 +1,23 @@
+{
+  "name": "prerender-monitoring",
+  "version": "1.0.0",
+  "description": "Simple tool for monitoring TRP prerender servers",
+  "main": "index.js",
+  "dependencies": {
+    "restify": "^3.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://m3kka@github.com/travelrepublic/prerender-monitoring.git"
+  },
+  "author": "Marco Visintin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/travelrepublic/prerender-monitoring/issues"
+  },
+  "homepage": "https://github.com/travelrepublic/prerender-monitoring"
+}
