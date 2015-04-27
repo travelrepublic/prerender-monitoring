@@ -1,6 +1,6 @@
 var restify = require('restify');
 
-var PORT = 8080;
+var PORT = 4000;
 
 var server = restify.createServer({
 	name: 'prerender-monitoring'
