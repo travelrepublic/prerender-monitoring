@@ -1,6 +1,7 @@
-var restify = require('restify');
+var restify = require('restify'),
+	control = require('control');
 
-var PORT = 4000;
+var PORT = 8080;
 
 var server = restify.createServer({
 	name: 'prerender-monitoring'
@@ -12,7 +13,27 @@ server
 
 server
 	.get('/', function translate (req, res, next) {
-		res.send(200, 'It works!');
+		var shared = Object.create(control.controller),
+			results = [];
+
+		shared.user = 'control';
+
+		var controllers = control.controllers([
+			'10.0.0.251',
+			'10.0.0.77',
+			'10.0.0.111',
+			'10.0.0.76'
+		], shared);
+
+		for (var i = 0; ii = controllers.length; i < ii; i++) {
+			controllers[i].ssh('date', function () {
+				results.push(arguments);
+			})
+		};
+
+		setTimeout(function () {
+			res.send(200, results);
+		}, 5000)
 	});
 
 server.listen(PORT, function () {

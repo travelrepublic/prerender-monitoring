@@ -4,6 +4,7 @@
   "description": "Simple tool for monitoring TRP prerender servers",
   "main": "index.js",
   "dependencies": {
+    "control": "^0.2.3",
     "restify": "^3.0.2"
   },
   "devDependencies": {},
