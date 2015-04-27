@@ -25,7 +25,7 @@ server
 			'10.0.0.76'
 		], shared);
 
-		for (var i = 0; ii = controllers.length; i < ii; i++) {
+		for (var i = 0, ii = controllers.length; i < ii; i++) {
 			controllers[i].ssh('date', function () {
 				results.push(arguments);
 			})
