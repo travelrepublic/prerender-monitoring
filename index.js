@@ -19,7 +19,7 @@ server
 			fin = '';
 
 		conn.on('ready', function () {
-			conn.exec('bobo', function (err, stream) {
+			conn.exec('date', function (err, stream) {
 				if (err) {
 					return res.send(500, err);
 				}
