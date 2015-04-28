@@ -17,7 +17,7 @@ server
 			results = [];
 
 		shared.user = 'control';
-		shared.logPath = '~/home/ubuntu/test.log';
+		shared.logPath = '/home/ubuntu/test.log';
 
 		var controllers = control.controllers([
 			'10.0.0.251',
