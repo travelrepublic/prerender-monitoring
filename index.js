@@ -14,15 +14,19 @@ server
 server
 	.get('/', function translate (req, res, next) {
 		
-		var conn = new ssh();
+		var conn = new ssh(),
+			all = [],
+			fin = '';
 
 		conn.on('ready', function () {
 			conn.exec('date', function (err, stream) {
 				stream
 					.on('data', function (data) {
-						res.send(200, data.ToString());
+						all.push(data);
+						fin += data;
 					})
 					.on('close', function (code, signal) {
+						res.send(200, fin);
 						conn.end();
 					});
 			});
