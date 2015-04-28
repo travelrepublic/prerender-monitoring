@@ -19,7 +19,7 @@ server
 			fin = '';
 
 		conn.on('ready', function () {
-			conn.exec('date', function (err, stream) {
+			conn.exec('./test.sh', function (err, stream) {
 				stream
 					.on('data', function (data) {
 						fin += data;
@@ -41,4 +41,4 @@ server
 
 server.listen(PORT, function () {
 	console.log('sourcemaps-stacktrace-started on port %s', PORT);
-});
+}); 
