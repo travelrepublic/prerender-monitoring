@@ -20,7 +20,7 @@ server
 			conn.exec('date', function (err, stream) {
 				stream
 					.on('data', function (data) {
-						console.log(data);
+						res.send(200, data);
 					})
 					.on('close', function (code, signal) {
 						conn.end();
@@ -31,7 +31,7 @@ server
 		conn.connect({
 			host: '10.0.0.76',
 			port: 22,
-			username: 'control'
+			username: 'control',
 		});
 	});
 
