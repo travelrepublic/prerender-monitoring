@@ -1,5 +1,5 @@
 var restify = require('restify'),
-	control = require('control');
+	ssh = require('ssh2').Client;
 
 var PORT = 4000;
 
@@ -13,28 +13,26 @@ server
 
 server
 	.get('/', function translate (req, res, next) {
-		var shared = Object.create(control.controller),
-			results = [];
+		
+		var conn = new ssh();
 
-		shared.user = 'control';
-		shared.logPath = '/home/ubuntu/test.log';
+		conn.on('ready', function () {
+			conn.exec('date', function (err, stream) {
+				stream
+					.on('data', function (data) {
+						console.log(data);
+					})
+					.on('close', function (code, signal) {
+						conn.end();
+					});
+			});
+		});
 
-		var controllers = control.controllers([
-			'10.0.0.251',
-			'10.0.0.77',
-			'10.0.0.111',
-			'10.0.0.76'
-		], shared);
-
-		for (var i = 0, ii = controllers.length; i < ii; i++) {
-			controllers[i].ssh('date', function () {
-				results.push(arguments);
-			})
-		};
-
-		setTimeout(function () {
-			res.send(200, results);
-		}, 5000)
+		conn.connect({
+			host: '10.0.0.76',
+			port: 22,
+			username: 'control'
+		});
 	});
 
 server.listen(PORT, function () {
