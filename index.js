@@ -31,7 +31,8 @@ server
 		conn.connect({
 			host: '10.0.0.76',
 			port: 22,
-			username: 'control',
+			username: 'ec2-user',
+			privateKey: require('fs').readFileSync('/home/ubuntu/prerender.pem'),
 		});
 	});
 
