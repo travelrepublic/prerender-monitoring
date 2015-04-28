@@ -22,11 +22,10 @@ server
 			conn.exec('date', function (err, stream) {
 				stream
 					.on('data', function (data) {
-						all.push(data);
 						fin += data;
 					})
 					.on('close', function (code, signal) {
-						res.send(200, data);
+						res.send(200, fin);
 						conn.end();
 					});
 			});
