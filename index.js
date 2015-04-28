@@ -19,7 +19,7 @@ server
 			fin = '';
 
 		conn.on('ready', function () {
-			conn.exec('test.sh', function (err, stream) {
+			conn.exec('bobo.sh', function (err, stream) {
 				if (err) {
 					return res.send(500, err);
 				}
