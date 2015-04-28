@@ -26,7 +26,7 @@ server
 						fin += data;
 					})
 					.on('close', function (code, signal) {
-						res.send(200, fin);
+						res.send(200, all);
 						conn.end();
 					});
 			});
