@@ -20,12 +20,15 @@ server
 
 		conn.on('ready', function () {
 			conn.exec('./test.sh', function (err, stream) {
+				if (err) {
+					return res.send(500, err);
+				}
 				stream
 					.on('data', function (data) {
 						fin += data;
 					})
 					.on('close', function (code, signal) {
-						res.send(200, fin);
+						res.send(200, { data: fin, code: code, signal: signal });
 						conn.end();
 					});
 			});
