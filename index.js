@@ -20,7 +20,7 @@ server
 			conn.exec('date', function (err, stream) {
 				stream
 					.on('data', function (data) {
-						res.send(200, data);
+						res.send(200, data.ToString());
 					})
 					.on('close', function (code, signal) {
 						conn.end();
